@@ -18,3 +18,7 @@
 node_modules/
 npm-debug.*
 Thumbs.db
+
+# Собранные JS-файлы (бандл)
+public/bundle.js
+public/bundle.js.map
