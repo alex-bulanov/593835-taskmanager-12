@@ -11,7 +11,6 @@ import {SortType} from "../const.js";
 
 const TASK_COUNT_PER_STEP = 8;
 
-
 export default class Board {
   constructor(boardContainer) {
     this._boardContainer = boardContainer;
