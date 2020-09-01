@@ -3,15 +3,21 @@ import Chart from "chart.js";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import SmartView from "./smart.js";
 import {getCurrentDate} from "../utils/task.js";
-import {countCompletedTaskInDateRange, makeItemsUniq, countTasksByColor, colorToHex, countTasksInDateRange, parseChartDate, getDatesInRange} from "../utils/statistics.js";
+import {
+  countCompletedTaskInDateRange,
+  makeItemsUniq,
+  countTasksByColor,
+  colorToHex,
+  countTasksInDateRange,
+  parseChartDate,
+  getDatesInRange
+} from "../utils/statistics.js";
 
 const renderColorsChart = (colorsCtx, tasks) => {
-
   const taskColors = tasks.map((task) => task.color);
   const uniqColors = makeItemsUniq(taskColors);
   const taskByColorCounts = uniqColors.map((color) => countTasksByColor(tasks, color));
   const hexColors = uniqColors.map((color) => colorToHex[color]);
-
 
   return new Chart(colorsCtx, {
     plugins: [ChartDataLabels],
@@ -69,7 +75,6 @@ const renderColorsChart = (colorsCtx, tasks) => {
 };
 
 const renderDaysChart = (daysCtx, tasks, dateFrom, dateTo) => {
-
   const dates = getDatesInRange(dateFrom, dateTo);
   const parsedDates = dates.map(parseChartDate);
   const taskInDateRangeCounts = countTasksInDateRange(dates, tasks);
@@ -230,7 +235,15 @@ export default class Statistics extends SmartView {
       this._datepicker = null;
     }
 
-    this._datepicker = flatpickr(this.getElement().querySelector(`.statistic__period-input`), {mode: `range`, dateFormat: `j F`, defaultDate: [this._data.dateFrom, this._data.dateTo], onChange: this._dateChangeHandler});
+    this._datepicker = flatpickr(
+      this.getElement().querySelector(`.statistic__period-input`),
+      {
+        mode: `range`,
+        dateFormat: `j F`,
+        defaultDate: [this._data.dateFrom, this._data.dateTo],
+        onChange: this._dateChangeHandler
+      }
+    );
   }
 
   _setCharts() {

@@ -1,5 +1,5 @@
 import moment from "moment";
-
+import {isDatesEqual} from "./task.js";
 import {Color} from "../const.js";
 
 export const colorToHex = {
@@ -19,10 +19,12 @@ export const countTasksByColor = (tasks, color) => {
   return tasks.filter((task) => task.color === color).length;
 };
 
-const isDueDateSame = (dateA, dateB) => moment(dateA).isSame(dateB);
-
 export const countTasksInDateRange = (dates, tasks) => {
-  return dates.map((date) => tasks.filter((task) => isDueDateSame(task.dueDate, date)).length);
+  return dates.map(
+    (date) => tasks.filter(
+      (task) => isDatesEqual(task.dueDate, date)
+    ).length
+  );
 };
 
 export const countCompletedTaskInDateRange = (tasks, dateFrom, dateTo) => {
@@ -31,8 +33,6 @@ export const countCompletedTaskInDateRange = (tasks, dateFrom, dateTo) => {
       return counter;
     }
 
-    // С помощью moment.js проверям, сколько задач с дедлайном
-    // попадают в диапазон дат
     if (
       moment(task.dueDate).isSame(dateFrom) ||
       moment(task.dueDate).isBetween(dateFrom, dateTo) ||
