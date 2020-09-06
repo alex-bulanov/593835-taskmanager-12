@@ -186,6 +186,7 @@ export default class Statistics extends SmartView {
       dateTo: getCurrentDate()
     };
 
+    const colorsCtx = this.getElement().querySelector(`.statistic__colors`);
     this._colorsCart = null;
     this._daysChart = null;
 
