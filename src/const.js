@@ -1,4 +1,14 @@
-export const COLORS = [`black`, `yellow`, `blue`, `green`, `pink`];
+export const Color = {
+  BLACK: `black`,
+  YELLOW: `yellow`,
+  BLUE: `blue`,
+  GREEN: `green`,
+  PINK: `pink`
+};
+
+export const COLORS = Object.values(Color);
+
+
 export const SortType = {
   DEFAULT: `default`,
   DATE_DOWN: `date-down`,
@@ -24,4 +34,10 @@ export const FilterType = {
   FAVORITES: `favorites`,
   REPEATING: `repeating`,
   ARCHIVE: `archive`
+};
+
+export const MenuItem = {
+  ADD_NEW_TASK: `ADD_NEW_TASK`,
+  TASKS: `TASKS`,
+  STATISTICS: `STATISTICS`
 };
