@@ -186,7 +186,7 @@ export default class Statistics extends SmartView {
       dateTo: getCurrentDate()
     };
 
-    const colorsCtx = this.getElement().querySelector(`.statistic__colors`);
+    // const colorsCtx = this.getElement().querySelector(`.statistic__colors`);
     this._colorsCart = null;
     this._daysChart = null;
 
@@ -236,15 +236,7 @@ export default class Statistics extends SmartView {
       this._datepicker = null;
     }
 
-    this._datepicker = flatpickr(
-      this.getElement().querySelector(`.statistic__period-input`),
-      {
-        mode: `range`,
-        dateFormat: `j F`,
-        defaultDate: [this._data.dateFrom, this._data.dateTo],
-        onChange: this._dateChangeHandler
-      }
-    );
+    this._datepicker = flatpickr(this.getElement().querySelector(`.statistic__period-input`), {mode: `range`, dateFormat: `j F`, defaultDate: [this._data.dateFrom, this._data.dateTo], onChange: this._dateChangeHandler});
   }
 
   _setCharts() {
